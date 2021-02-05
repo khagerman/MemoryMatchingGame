@@ -1,0 +1,43 @@
+body {
+  font-family: "Open Sans", sans-serif;
+
+  background: radial-gradient(#fad2e1, #fff1e6);
+  text-align: center;
+}
+h1 {
+  margin: 0 auto 0 auto;
+}
+#game {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+}
+#game div {
+  border: 1px solid black;
+  border-radius: 1.5rem;
+  width: 150px;
+  height: 200px;
+  margin: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+button {
+  background-color: #deaaff;
+  border: none;
+  padding: 10px;
+  text-align: center;
+  display: inline;
+  font-size: 1rem;
+  margin: 4px 2px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 0.5rem;
+}
+img {
+  width: 1rem;
+  height: 1rem;
+  display: inline-flex;
+  float: left;
+}
