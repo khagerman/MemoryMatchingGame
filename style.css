@@ -23,6 +23,8 @@ h1 {
   height: 200px;
   margin: 10px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  transition-property: background-color;
+  transition-duration: 2s;
 }
 button {
   background-color: #deaaff;
