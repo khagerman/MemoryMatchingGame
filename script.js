@@ -56,7 +56,6 @@ function createDivsForColors(colorArray) {
     gameContainer.append(newDiv);
   }
 }
-let clicks = 0;
 let firstColor = "";
 let secondColor = "";
 let firstCard = "";
@@ -70,17 +69,14 @@ function reset() {
   secondColor = "";
   firstCard = "";
   secondCard = "";
-  clicks = 0;
 }
 
 function handleCardClick(e) {
-  clicks++;
-
-  if (clicks === 1) {
+  if (firstColor === "") {
     e.target.style.backgroundColor = e.target.className;
     firstColor = e.target.className;
     firstCard = e.target;
-  } else if (clicks === 2) {
+  } else {
     e.target.style.backgroundColor = e.target.className;
     secondColor = e.target.className;
     secondCard = e.target;
