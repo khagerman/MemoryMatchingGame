@@ -57,38 +57,43 @@ function createDivsForColors(colorArray) {
   }
 }
 let clicks = 0;
-let firstClick = "";
-let secondClick = "";
+let firstColor = "";
+let secondColor = "";
+let firstCard = "";
+let secondCard = "";
 let gamepoints = 0;
 
-function handleCardClick(event) {
+// reset code
+
+function reset() {
+  firstColor = "";
+  secondColor = "";
+  firstCard = "";
+  secondCard = "";
+  clicks = 0;
+}
+
+function handleCardClick(e) {
   clicks++;
 
   if (clicks === 1) {
-    event.target.style.backgroundColor = event.target.className.toString();
-    color1 = event.target;
-    // console.log(color1);
-    firstClick = event.target.className.toString();
+    e.target.style.backgroundColor = e.target.className;
+    firstColor = e.target.className;
+    firstCard = e.target;
   } else if (clicks === 2) {
-    event.target.style.backgroundColor = event.target.className.toString();
-    color2 = event.target;
-    secondClick = event.target.className.toString();
-  } else {
-    clicks = 0;
+    e.target.style.backgroundColor = e.target.className;
+    secondColor = e.target.className;
+    secondCard = e.target;
   }
-  if (firstClick !== "" && secondClick !== "") {
-    if (firstClick !== secondClick) {
+  if (firstColor !== "" && secondColor !== "") {
+    if (firstColor !== secondColor) {
       setTimeout(function () {
-        firstClick = "";
-        secondClick = "";
-        color1.style.backgroundColor = "";
-        color2.style.backgroundColor = "";
-        clicks = 0;
+        firstCard.style.backgroundColor = "";
+        secondCard.style.backgroundColor = "";
+        reset();
       }, 1000);
     } else {
-      firstClick = "";
-      secondClick = "";
-      clicks = 0;
+      reset();
       gamepoints += 2;
     }
   }
