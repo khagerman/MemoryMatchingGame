@@ -6,7 +6,8 @@ const input = document.querySelector("input");
 const score = document.querySelector(".currentscore");
 const colors = [];
 const bestScore = document.querySelector(".bestscore");
-let localStorageScores = JSON.parse(localStorage.getItem("savedScores")) || [];
+let localStorageScores =
+  JSON.parse(sessionStorage.getItem("savedScores")) || [];
 if (localStorageScores.length !== 0) {
   bestScore.innerText = localStorageScores.reduce((max, num) => {
     return Math.max(max, num);
@@ -127,5 +128,5 @@ function win() {
 function localStorageSave(score) {
   localStorageScores.push(score);
   const scores = JSON.stringify(localStorageScores);
-  localStorage.setItem("savedScores", scores);
+  sessionStorage.setItem("savedScores", scores);
 }
