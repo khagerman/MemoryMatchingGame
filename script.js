@@ -37,7 +37,6 @@ function shuffle(array) {
 
   return array;
 }
-let shuffledColors = shuffle(colors);
 
 // this function loops over the array of colors
 // it creates a new div and gives it a class with the value of the color
@@ -66,12 +65,12 @@ form.addEventListener("submit", function (e) {
   startGame();
 });
 function startGame() {
+  let shuffledColors = shuffle(colors);
+  console.log(shuffledColors);
   createDivsForColors(shuffledColors);
   form.remove();
 }
 
-let firstColor = "";
-let secondColor = "";
 let firstCard = "";
 let secondCard = "";
 let gamepoints = 0;
@@ -79,24 +78,20 @@ let winScore = 0;
 // reset code
 
 function reset() {
-  firstColor = "";
-  secondColor = "";
   firstCard = "";
   secondCard = "";
 }
 
 function handleCardClick(e) {
-  if (firstColor === "") {
+  if (firstCard === "") {
     e.target.style.backgroundColor = e.target.className;
-    firstColor = e.target.className;
     firstCard = e.target;
   } else {
     e.target.style.backgroundColor = e.target.className;
-    secondColor = e.target.className;
     secondCard = e.target;
   }
-  if (firstColor !== "" && secondColor !== "") {
-    if (firstColor !== secondColor) {
+  if (firstCard !== "" && secondCard !== "") {
+    if (firstCard.className !== secondCard.className) {
       setTimeout(function () {
         firstCard.style.backgroundColor = "";
         secondCard.style.backgroundColor = "";
@@ -124,4 +119,6 @@ function win() {
   winBanner.id = "win";
   winBanner.appendChild(winningText);
 }
-function localStorageSave(score) {}
+function localStorageSave(score) {
+  localStorageScores.push(score);
+}
