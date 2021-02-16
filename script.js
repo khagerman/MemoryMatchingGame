@@ -4,10 +4,14 @@ const submitButton = document.querySelector("#submit");
 const form = document.querySelector("form");
 const input = document.querySelector("input");
 const score = document.querySelector(".currentscore");
-// const bestScore = document.querySelector(".bestscore");
 const colors = [];
-const localStorageScores = [];
-
+const bestScore = document.querySelector(".bestscore");
+let localStorageScores = JSON.parse(localStorage.getItem("savedScores")) || [];
+if (localStorageScores.length !== 0) {
+  bestScore.innerText = localStorageScores.reduce((max, num) => {
+    return Math.max(max, num);
+  });
+}
 // Make a random color and push to colors array based on user input
 function cardColorMaker(num) {
   for (let i = 0; i < num; i++) {
@@ -105,6 +109,7 @@ function handleCardClick(e) {
   }
   if (gamepoints === winScore) {
     win();
+    localStorageSave(parseInt(gamepoints));
   }
 }
 
@@ -121,4 +126,6 @@ function win() {
 }
 function localStorageSave(score) {
   localStorageScores.push(score);
+  const scores = JSON.stringify(localStorageScores);
+  localStorage.setItem("savedScores", scores);
 }
